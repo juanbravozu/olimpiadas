@@ -18,12 +18,6 @@ main {
 .movSelector--selected {
   border-color: red;
 }
-.movSelector:first-child {
-  left: calc(50% - 100px);
-}
-.movSelector:last-child {
-  left: calc(50% + 100px);
-}
 
 body {
   height: 100vh;

@@ -4,8 +4,9 @@ window.addEventListener('load', () => {
     const selectors = document.querySelectorAll('.movSelector');
     let balls = [];
 
-    selectors.forEach(selector => {
-        const ball = new BolitaMovSelector(selector);
+    selectors.forEach((selector, index) => {
+        const ball = new BolitaMovSelector(selector, (index-1)*100, 0);
+        ball.updatePosition();
         balls.push(ball);
     });
 
@@ -21,6 +22,29 @@ window.addEventListener('load', () => {
         });
     });
 
-    console.log(selectors);
-    console.log(balls);
+    document.addEventListener('keydown', event => {
+        balls.forEach(ball => {
+            if(ball.isSelected()) {
+                
+                switch(event.key) {
+                    case 'ArrowUp':
+                        ball.setY(ball.getY() - 5);
+                        break;
+
+                    case 'ArrowDown':
+                        ball.setY(ball.getY() + 5);
+                        break;
+
+                    case 'ArrowRight':
+                        ball.setX(ball.getX() + 5);
+                        break;
+
+                    case 'ArrowLeft':
+                        ball.setX(ball.getX() - 5);
+                        break;
+                }
+                ball.updatePosition();
+            }
+        });
+    });
 });

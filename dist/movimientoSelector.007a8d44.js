@@ -132,17 +132,45 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var BolitaMovSelector = /*#__PURE__*/function () {
-  function BolitaMovSelector(element) {
+  function BolitaMovSelector(element, x, y) {
     _classCallCheck(this, BolitaMovSelector);
 
     this.element = element;
     this.selected = false;
+    this.x = x;
+    this.y = y;
   }
 
   _createClass(BolitaMovSelector, [{
+    key: "updatePosition",
+    value: function updatePosition() {
+      this.element.style.top = 'calc(50% + ' + this.y + 'px)';
+      this.element.style.left = 'calc(50% + ' + this.x + 'px)';
+    }
+  }, {
     key: "getElement",
     value: function getElement() {
       return this.element;
+    }
+  }, {
+    key: "getX",
+    value: function getX() {
+      return this.x;
+    }
+  }, {
+    key: "setX",
+    value: function setX(x) {
+      this.x = x;
+    }
+  }, {
+    key: "getY",
+    value: function getY() {
+      return this.y;
+    }
+  }, {
+    key: "setY",
+    value: function setY(y) {
+      this.y = y;
     }
   }, {
     key: "isSelected",
@@ -171,8 +199,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 window.addEventListener('load', function () {
   var selectors = document.querySelectorAll('.movSelector');
   var balls = [];
-  selectors.forEach(function (selector) {
-    var ball = new _BolitaMovSelector.default(selector);
+  selectors.forEach(function (selector, index) {
+    var ball = new _BolitaMovSelector.default(selector, (index - 1) * 100, 0);
+    ball.updatePosition();
     balls.push(ball);
   });
   balls.forEach(function (ball) {
@@ -186,8 +215,31 @@ window.addEventListener('load', function () {
       ballElement.classList.add('movSelector--selected');
     });
   });
-  console.log(selectors);
-  console.log(balls);
+  document.addEventListener('keydown', function (event) {
+    balls.forEach(function (ball) {
+      if (ball.isSelected()) {
+        switch (event.key) {
+          case 'ArrowUp':
+            ball.setY(ball.getY() - 5);
+            break;
+
+          case 'ArrowDown':
+            ball.setY(ball.getY() + 5);
+            break;
+
+          case 'ArrowRight':
+            ball.setX(ball.getX() + 5);
+            break;
+
+          case 'ArrowLeft':
+            ball.setX(ball.getX() - 5);
+            break;
+        }
+
+        ball.updatePosition();
+      }
+    });
+  });
 });
 },{"./BolitaMovSelector":"scripts/BolitaMovSelector.js"}],"C:/Users/USER/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -217,7 +269,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53984" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58024" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
