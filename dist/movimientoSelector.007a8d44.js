@@ -218,6 +218,8 @@ window.addEventListener('load', function () {
   document.addEventListener('keydown', function (event) {
     balls.forEach(function (ball) {
       if (ball.isSelected()) {
+        console.log(event);
+
         switch (event.key) {
           case 'ArrowUp':
             ball.setY(ball.getY() - 5);
@@ -269,7 +271,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58024" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50191" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

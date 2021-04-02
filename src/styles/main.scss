@@ -1,8 +1,27 @@
 @import './pages/movimientoSelector';
+@import './pages/arrastreAlInventario';
 
 body {
     height: 100vh;
     width: 100vw;
+}
+
+.circle {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 10px #000000 solid;
+    border-radius: 50px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.square {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 10px #000000 solid;
+    transform: translate(-50%, -50%);
 }
 
 * {

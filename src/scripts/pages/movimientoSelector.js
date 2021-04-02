@@ -1,4 +1,4 @@
-import BolitaMovSelector from './BolitaMovSelector';
+import BolitaMovSelector from '../classes/BolitaMovSelector';
 
 window.addEventListener('load', () => {
     const selectors = document.querySelectorAll('.movSelector');
@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
     document.addEventListener('keydown', event => {
         balls.forEach(ball => {
             if(ball.isSelected()) {
-                
+                console.log(event);
                 switch(event.key) {
                     case 'ArrowUp':
                         ball.setY(ball.getY() - 5);

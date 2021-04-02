@@ -4,24 +4,62 @@ main {
   height: 100%;
 }
 
-.movSelector {
-  position: absolute;
-  width: 80px;
-  height: 80px;
+div.movSelector {
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  border: 10px #000000 solid;
-  border-radius: 50px;
-  cursor: pointer;
 }
-.movSelector--selected {
+div.movSelector--selected {
   border-color: red;
+}
+
+#inventario div:nth-child(3n-2) {
+  left: calc(50% - 100px);
+}
+#inventario div:nth-child(3n) {
+  left: calc(50% + 100px);
+}
+
+.squareInv {
+  top: 60%;
+  left: 50%;
+  pointer-events: none;
+}
+
+.circleInv {
+  top: 40%;
+  left: 50%;
+}
+.circleInv--green {
+  background-color: #69c225;
+}
+.circleInv--purple {
+  background-color: #a423a6;
+}
+.circleInv--orange {
+  background-color: #f0951f;
 }
 
 body {
   height: 100vh;
   width: 100vw;
+}
+
+.circle {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 10px #000000 solid;
+  border-radius: 50px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.square {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 10px #000000 solid;
+  transform: translate(-50%, -50%);
 }
 
 * {
